@@ -22,8 +22,6 @@ login()
     const email = this.loginForm.controls['email'].value;
     const password = this.loginForm.controls['password'].value;
     this.auth.login({email, password});
-
-
   }
 
   get f()

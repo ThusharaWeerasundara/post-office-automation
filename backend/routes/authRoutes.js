@@ -8,7 +8,7 @@ router.post('/login',  authController.login_post);
 router.post('/package',  authController.package_post);
 router.post('/price',  authController.price_post);
 
-
+router.get('/packages',  authController.get_packages);
 router.get('/logout',  authController.logout_get);
 
 router.get('/testget',  authController.test_get);

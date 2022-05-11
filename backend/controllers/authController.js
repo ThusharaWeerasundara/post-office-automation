@@ -3,6 +3,8 @@ const Package = require("../models/Package");
 const Price = require("../models/Price");
 var crypto = require('crypto');
 const jwt = require('jsonwebtoken');
+const mqtt = require('mqtt')
+const client  = mqtt.connect('mqtt://broker.hivemq.com')
 
 
 // create json web token
@@ -45,6 +47,15 @@ const handleErrors = (err) => {
   return errors;
 }
 
+
+module.exports.get_packages = (req, res) => {
+
+  Package.find({}, {_id:0, sender:1, receiver:1, weight:1, price:1, created_at:1}).then(async results => {
+        
+        console.log("get packages")
+      res.status(200).json({ packages: results });
+  })
+}
 
 module.exports.readings_put = (req, res) => {
   const tank =  JSON.parse(req.params.id); 
@@ -175,21 +186,11 @@ module.exports.test_post = (req, res) => {
 
 module.exports.package_post = async (req, res) => {
   
-  const { sender, receiver, weight } = req.body;
+  const { sender, receiver } = req.body;
   var price = 0;
+  var weight = 0;
 
-  Price.find({}).then(async results => {
-
-    for (let i = 0; i < results.length; i++) 
-    {
-        if(weight <= results[i].max)
-         {
-           price = results[i].price;
-           break;
-        }
-    }
-
-    try
+try
     { 
       const package = await Package.create({ sender, receiver, weight, price });
       res.status(201).json({ package: package });
@@ -200,13 +201,6 @@ module.exports.package_post = async (req, res) => {
       const errors = handleErrors(err);
       res.status(400).json({ errors });
     }
-
-  })
-
-
-
-
-
 
 }
 
@@ -247,3 +241,56 @@ module.exports.price_put = async (req, res) => {
         }
     });
 }
+
+
+client.on('connect', function () {
+  client.subscribe('yg', function (err) {
+    if (!err) 
+    {
+      console.log("mqtt works in server")
+    }
+  })
+})
+
+client.on('message', function (topic, message) {
+  // message is Buffer
+  console.log(message.toString())
+  var price = 0;
+
+  var weight = message.toString();
+
+    Price.find({}).then(async results => {
+      //console.log("hereee")
+
+    for (let i = 0; i < results.length; i++) 
+    {
+      //console.log(results[i])
+        if(weight <= results[i].max)
+         {
+           price = results[i].price;
+           console.log("price is: " + price);
+
+  const filter = {weight: 0, price: 0};
+  const updates = {weight: weight, price: price};
+
+  Package.updateOne(filter, updates , function(err,
+    result)
+    {
+      if (err) 
+        {
+          console.log(err);
+        } 
+      else 
+        { 
+           console.log("result");
+        }
+    });
+           break;
+        }
+    }
+
+    
+
+  })
+
+})

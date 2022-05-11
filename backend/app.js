@@ -5,6 +5,7 @@ const app = express()
 const port = 3000
 var cors = require('cors')
 
+
 var bodyParser = require('body-parser')
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -48,5 +49,8 @@ app.use((req, res, next) => {
   res.status(404).send({msg : "not valid request"});
   next();
 })
+
+
+
 
 module.exports = app;

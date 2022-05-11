@@ -22,13 +22,13 @@ export class LoginServicesService {
     var cookiename: string;
 
     this.http.post<any>('http://localhost:3000/login', user, {observe: 'response',}).subscribe(data => {
-      console.log("res status" + JSON.stringify(data)) 
-      console.log("res status" + data.status)
+      //console.log("res status" + JSON.stringify(data)) 
+     // console.log("res status" + data.status)
       if(data.status == 200)
       {
         this.router.navigate(['/records']);
         cookiename = this.cookieService.get('jwt')
-        console.log("res jwt" + JSON.stringify(data.headers))
+       // console.log("res jwt" + JSON.stringify(data.headers))
 
       }
       

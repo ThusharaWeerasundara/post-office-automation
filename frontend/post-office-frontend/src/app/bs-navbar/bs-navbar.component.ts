@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { AuthService } from '../auth.service';
+import { LoginServicesService } from '../services/login-services.service';
 
 
 @Component({
@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class BsNavbarComponent implements OnInit {
   
 
-  constructor(/*public auth: AuthService*/) 
+  constructor(public auth: LoginServicesService) 
   { 
      // 
   }
@@ -19,7 +19,8 @@ export class BsNavbarComponent implements OnInit {
 }
   logout()
   {
-    //this.auth.logout();
+    this.auth.logout();
+    console.log("logout: " + this.auth.loged$)
   }
 
 }

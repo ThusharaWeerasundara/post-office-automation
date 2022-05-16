@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { AddPackageComponent } from './add-package/add-package.component';
 import { SuccessComponent } from './success/success.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { SuccessComponent } from './success/success.component';
     HomeComponent,
     BsNavbarComponent,
     AddPackageComponent,
-    SuccessComponent
+    SuccessComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

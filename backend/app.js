@@ -13,11 +13,11 @@ app.use(cors())
 
 
 const username = "gayan";
-const password = "1234";
+const password = "172022";
 const cluster = "cluster0";
 const dbname = "project";
 
-const dburi = "mongodb+srv://gayan:1234@cluster0.aqkld.mongodb.net/project?retryWrites=true&w=majority";
+const dburi = "mongodb+srv://gayan:172022@cluster0.xg1kn.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.connect(
   dburi ,

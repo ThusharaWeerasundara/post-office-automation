@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
 
       <a class="navbar-brand" routerLink="/">POST OFFICE SYSTEM</a>
@@ -17,15 +17,18 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/sendpackage">Send Package</a>
           </li>
-
-         
-
-            <li class="nav-item">
-              <a class="nav-link" routerLink="/login">Admin Login</a>
-            </li>
-
        
+            <ng-template [ngIf]="auth.loged$">
+              <li class="nav-item">
+                <a class="nav-link" (click)="logout()" routerLink="/login">Admin Logout</a>
+              </li>
+            </ng-template>
 
+            <ng-template [ngIf]="!auth.loged$">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/login">Admin Login</a>
+              </li>
+            </ng-template>
         
         </ul>
 
@@ -34,3 +37,5 @@
       </div>
     </div>
   </nav>
+
+ 

@@ -11,8 +11,12 @@ import { CookieService } from 'ngx-cookie-service'
 })
 export class LoginServicesService {
 
+  loged$: boolean;
 
-  constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) { }
+  constructor(private http: HttpClient, private router: Router, private cookieService: CookieService) 
+  { 
+    this.loged$ = false;
+  }
 
   login(user: any)
   {
@@ -26,6 +30,7 @@ export class LoginServicesService {
      // console.log("res status" + data.status)
       if(data.status == 200)
       {
+        this.loged$ = true;
         this.router.navigate(['/records']);
         cookiename = this.cookieService.get('jwt')
        // console.log("res jwt" + JSON.stringify(data.headers))
@@ -33,7 +38,11 @@ export class LoginServicesService {
       }
       
   })
+  }
 
-
+  logout()
+  {
+    this.loged$ = false;
+    this.router.navigate(['/login']);
   }
 }

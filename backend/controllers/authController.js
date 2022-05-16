@@ -50,7 +50,7 @@ const handleErrors = (err) => {
 
 module.exports.get_packages = (req, res) => {
 
-  Package.find({}, {_id:0, sender:1, receiver:1, weight:1, price:1, created_at:1}).then(async results => {
+  Package.find({}, {_id:0, customer:1, recipient:1, sender:1, receiver:1, weight:1, price:1, created_at:1}).then(async results => {
         
         console.log("get packages")
       res.status(200).json({ packages: results });

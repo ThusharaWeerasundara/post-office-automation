@@ -8,12 +8,12 @@ import { RecordsService } from '../services/records.service';
 })
 export class RecordsComponent implements OnInit {
 
-  
+  show: boolean;
   packages: any[] = [];
   //private records: Observable<Object>;
   constructor(private service: RecordsService) 
   { 
-
+      this.show = true;
       this.service.getAll().subscribe((results) =>  {
         this.packages = results.packages;
         //console.log('JSON Respons in front end = ', JSON.stringify(this.packagess));
@@ -24,7 +24,7 @@ export class RecordsComponent implements OnInit {
         }
       })
       
-  
+      this.show = false;
   }
 
   ngOnInit(): void {

@@ -1,0 +1,10 @@
+
+
+.addPackage
+{
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;   
+    animation: fadeInLeft; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+}

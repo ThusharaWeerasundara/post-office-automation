@@ -1,0 +1,9 @@
+.bg{
+    background-image : URL(../assets/bg.jfif);
+    padding-top: 80px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 1000%;
+    height: 1000%;
+}
+

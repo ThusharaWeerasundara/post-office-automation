@@ -186,13 +186,13 @@ module.exports.test_post = (req, res) => {
 
 module.exports.package_post = async (req, res) => {
   
-  const { sender, receiver } = req.body;
+  const {customer, recipient, sender, receiver } = req.body;
   var price = 0;
   var weight = 0;
 
 try
     { 
-      const package = await Package.create({ sender, receiver, weight, price });
+      const package = await Package.create({customer, recipient, sender, receiver, weight, price });
       res.status(201).json({ package: package });
     }
     catch(err)

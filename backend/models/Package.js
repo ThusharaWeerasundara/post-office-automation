@@ -2,7 +2,17 @@ const mongoose = require('mongoose');
 const { isEmail } = require('validator');
 
 const packageSchema = new mongoose.Schema({
-    sender: {
+    customer: {
+        type: String,
+        required: [true, 'Please enter customer name'],       
+        lowercase: true
+      },   
+    recipient: {
+        type: String,
+        required: [true, 'Please enter recipient name'],       
+        lowercase: true
+      },
+      sender: {
         type: String,
         required: [true, 'Please enter sender address'],       
         lowercase: true

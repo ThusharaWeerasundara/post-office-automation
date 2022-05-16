@@ -14,16 +14,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { LoginServicesService } from './services/login-services.service';
+import { PackageServicesService } from './services/package-services.service';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
+import { AddPackageComponent } from './add-package/add-package.component';
+import { SuccessComponent } from './success/success.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RecordsComponent,
     HomeComponent,
-    BsNavbarComponent
+    BsNavbarComponent,
+    AddPackageComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
@@ -34,12 +39,14 @@ import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
     RouterModule.forRoot([
       {path: '', component: HomeComponent},
       {path: 'records', component: RecordsComponent},
-      {path: 'login', component: LoginComponent}
-
+      {path: 'login', component: LoginComponent},
+      {path: 'sendpackage', component: AddPackageComponent},
+      {path: 'success', component: SuccessComponent}
+      
     ]),
     HttpClientModule
   ],
-  providers: [LoginServicesService, CookieService],
+  providers: [LoginServicesService, PackageServicesService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

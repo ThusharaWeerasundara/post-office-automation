@@ -9,3 +9,7 @@
     
 }
 
+.table-danger:hover
+{
+    background-color: lightgrey;
+}

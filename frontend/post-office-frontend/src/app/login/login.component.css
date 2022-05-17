@@ -1,12 +1,32 @@
-.login
+
+
+.img-fluid
 {
-    padding-top: 50px;
-    padding-left: 50px;
-    padding-right: 50px;
-    width: 30%;
-    animation: fadeInLeft; /* referring directly to the animation's @keyframe declaration */
-    animation-duration: 1s; /* don't forget to set a duration! */
+    width: 250px; 
+    height: 400px;
 }
 
+.card-header
+{   
+    color: rgb(250, 8, 0);
+    font-size:1.5cm;
+    font-family: Stencil Std, fantasy;
+}
 
+.card
+{
+   
+    animation: fadeInLeft; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+    background-color: #faa1a1;
+    position: fixed; /* or absolute */
+    top: 30%;
+    left: 30%;
 
+   
+}
+
+.card-header
+{
+    background-color: #ffc1c1;
+}

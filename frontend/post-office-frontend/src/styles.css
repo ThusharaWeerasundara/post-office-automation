@@ -1,7 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 
-body
+.body
 {
     padding-top: 10px;
+}
+
+.form-label
+{
+    color: rgb(255, 72, 72);
+    font-size: x-large;
+    font-family: Stencil Std, fantasy;
+}
+
+
+
+.form-control
+{
+    
+    font-size:0.5cm;
+    font-family: DejaVu Sans Mono, monospace;
+}
+
+.btn
+{
+    background-color: rgb(255, 0, 0);
+    font-size:0.5cm;
+    font-weight: bolder;
+    color: white;
+    border-color: red;
+}
+
+.btn:hover
+{
+    background-color: rgb(255, 0, 0);
+    font-size:0.5cm;
+    font-weight: bolder;
+    color: black;
+}
+
+.nav-link,.navbar-brand
+{
+    color: white;
+    
+    
+}
+
+
+.nav-link:hover,.navbar-brand:hover
+{
+    color: rgb(0, 0, 0);
 }

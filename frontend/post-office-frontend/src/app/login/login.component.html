@@ -1,37 +1,51 @@
 
-
-<ng-template [ngIf]="!show">
-  <div class="login">
-
-    <form [formGroup]="loginForm"  (ngSubmit)="login()"> 
+  <div class="card mb-3" >
+    <div class="row g-0">
   
-      <div class="mb-3">
-          <div class="alert alert-danger" *ngIf="loginForm.errors">Login failes</div>  
-          </div>
-  
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-  
-        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
-  
+      <div class="col-md-4">
+          <img src="../../assets/admin2.jfif" class="img-fluid rounded-start">    
       </div>
-  
-      <div class="mb-3">
-  
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-  
-        <input type="password" id="password" class="form-control" id="exampleInputPassword1" formControlName="password">
-  
+      <div class="col-md-8">
+        <div class="card-header"> Admin Login Portal </div>
+        <div class="card-body">
+          <ng-template [ngIf]="!show">
+            <div class="login">
+          
+              <form [formGroup]="loginForm"  (ngSubmit)="login()"> 
+            
+                <div class="mb-3">
+                    <div class="alert alert-danger" *ngIf="loginForm.errors">Login failes</div>  
+                    </div>
+            
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Email address</label>
+            
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email">
+            
+                </div>
+            
+                <div class="mb-3">
+            
+                  <label for="exampleInputPassword1" class="form-label">Password</label>
+            
+                  <input type="password" id="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+            
+                </div>
+            
+                <button type="submit" class="btn ">Submit</button>
+              </form>
+              
+            
+            </div>
+          </ng-template>
+          
+          <ng-template [ngIf]="show">
+            <app-spinner></app-spinner>
+          </ng-template>
+        </div>
       </div>
-  
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    
-  
+    </div>
   </div>
-</ng-template>
+  
 
-<ng-template [ngIf]="show">
-  <app-spinner></app-spinner>
-</ng-template>
 

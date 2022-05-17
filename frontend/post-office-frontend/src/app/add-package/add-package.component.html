@@ -1,45 +1,56 @@
-<div class="addPackage">
 
-    <form [formGroup]="packageForm"  (ngSubmit)="createEntry()"> 
   
-      <div class="mb-3">
-          <div class="alert alert-danger" *ngIf="packageForm.errors">Failed to Create Entry> Please Retry!</div>  
+
+
+
+  <div class="card">
+    <div class="card-header">
+      Package Registration
+    </div>
+    <div class="card-body">
+      <div class="addPackage">
+
+        <form [formGroup]="packageForm"  (ngSubmit)="createEntry()"> 
+      
+          <div class="mb-3">
+              <div class="alert alert-danger" *ngIf="packageForm.errors">Failed to Create Entry> Please Retry!</div>  
+              </div>
+      
+          <div class="mb-3">
+    
+            <label for="InputCustomer" class="form-label">Your Name</label>
+      
+            <input type="text" class="form-control" id="customer" aria-describedby="customerHelp" formControlName="customer">
+      
           </div>
-  
-      <div class="mb-3">
-
-        <label for="InputCustomer" class="form-label">Your Name</label>
-  
-        <input type="text" class="form-control" id="customer" aria-describedby="customerHelp" formControlName="customer">
-  
+      
+          <div class="mb-3">
+      
+            <label for="InputRecipient" class="form-label">Recipient Name</label>
+      
+            <input type="text" class="form-control" id="recipient" aria-describedby="recipientHelp" formControlName="recipient">
+      
+          </div>
+    
+          <div class="mb-3">
+      
+            <label for="InputRecipient" class="form-label">Your Address</label>
+      
+            <input type="text" class="form-control" id="sender" aria-describedby="senderHelp" formControlName="sender">
+      
+          </div>
+    
+          <div class="mb-3">
+      
+            <label for="InputRecipient" class="form-label">Recipient Address</label>
+      
+            <input type="text" class="form-control" id="receiver" aria-describedby="receiverHelp" formControlName="receiver">
+      
+          </div>
+      
+          <button type="submit" class="btn btn-primary">Create Package</button>
+        </form>
+      
       </div>
-  
-      <div class="mb-3">
-  
-        <label for="InputRecipient" class="form-label">Recipient Name</label>
-  
-        <input type="text" class="form-control" id="recipient" aria-describedby="recipientHelp" formControlName="recipient">
-  
-      </div>
-
-      <div class="mb-3">
-  
-        <label for="InputRecipient" class="form-label">Your Address</label>
-  
-        <input type="text" class="form-control" id="sender" aria-describedby="senderHelp" formControlName="sender">
-  
-      </div>
-
-      <div class="mb-3">
-  
-        <label for="InputRecipient" class="form-label">Recipient Address</label>
-  
-        <input type="text" class="form-control" id="receiver" aria-describedby="receiverHelp" formControlName="receiver">
-  
-      </div>
-  
-      <button type="submit" class="btn btn-primary">Create Package</button>
-    </form>
-  
+    </div>
   </div>
-  

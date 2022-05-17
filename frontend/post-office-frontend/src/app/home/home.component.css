@@ -1,0 +1,17 @@
+.card
+{
+    top: 1cm;  
+    animation: fadeInLeft; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 1s; /* don't forget to set a duration! */
+    background-color: #fabcbc;
+    font-size:1cm;
+    font-family: Stencil Std, fantasy;
+}
+
+.card-header
+{
+    color: rgb(250, 55, 55);
+    background-color: rgb(243, 142, 142);
+    font-size:1.5cm;
+    font-family: Stencil Std, fantasy;
+}

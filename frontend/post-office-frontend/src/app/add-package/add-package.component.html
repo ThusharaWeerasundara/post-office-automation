@@ -10,7 +10,7 @@
     <div class="card-body">
       <div class="addPackage">
 
-        <form [formGroup]="packageForm"  (ngSubmit)="createEntry()"> 
+        <form [formGroup]="packageForm"  (ngSubmit)="createEntry(weight, price)"> 
       
           <div class="mb-3">
               <div class="alert alert-danger" *ngIf="packageForm.errors">Failed to Create Entry> Please Retry!</div>  
@@ -47,10 +47,25 @@
             <input type="text" class="form-control" id="receiver" aria-describedby="receiverHelp" formControlName="receiver">
       
           </div>
+
+            <div class="mb-3">
+      
+            <label for="InputWeight" class="form-label">Weight: {{weight}} g</label>
+      
+            
+          </div>
+
+          <div class="mb-3">
+      
+            <label for="InputCharge" class="form-label">Service Charge: Rs 520.00</label>
+    
+          </div>
       
           <button type="submit" class="btn btn-primary">Create Package</button>
         </form>
-      
+        
       </div>
     </div>
   </div>
+
+  

@@ -21,6 +21,15 @@ import { BsNavbarComponent } from './bs-navbar/bs-navbar.component';
 import { AddPackageComponent } from './add-package/add-package.component';
 import { SuccessComponent } from './success/success.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+
+import { MqttModule, IMqttServiceOptions } from "ngx-mqtt";
+export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
+  hostname: 'broker.hivemq.com',
+  port: 8000,
+  path: '/mqtt'
+}
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +42,7 @@ import { SpinnerComponent } from './spinner/spinner.component';
     SpinnerComponent
   ],
   imports: [
+    MqttModule.forRoot(MQTT_SERVICE_OPTIONS),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -46,7 +56,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
       {path: 'success', component: SuccessComponent}
       
     ]),
-    HttpClientModule
+    HttpClientModule,
+    
   ],
   providers: [LoginServicesService, PackageServicesService, CookieService],
   bootstrap: [AppComponent]

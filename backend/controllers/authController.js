@@ -154,7 +154,7 @@ module.exports.login_post = async (req, res) => {
   console.log("login request")
   try 
   {
-    const user = await User.login(email, password);
+    const user = await User.login(email, password)
     console.log(user);
     const token = createToken(user._id);
     res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge * 1000});
@@ -186,9 +186,7 @@ module.exports.test_post = (req, res) => {
 
 module.exports.package_post = async (req, res) => {
   
-  const {customer, recipient, sender, receiver } = req.body;
-  var price = 0;
-  var weight = 0;
+  const {customer, recipient, sender, receiver, weight, price } = req.body;
 
 try
     { 

@@ -25,10 +25,13 @@ client.loop_start()
 value = 0
 mySensVals = ['14', '13', '11', '22', '23', '24', '27', '28', '29', '37', '42', '39']
 
+myCostVals = ['140', '130', '110', '220', '230', '240', '270', '280', '290', '370', '420', '390']
+
 i = 1
 while i < 6:
     time.sleep(5)
     infot = client.publish("ygTest/weight", mySensVals[value], qos=2)
+    infot = client.publish("ygTest/cost", myCostVals[value], qos=2)
     print(mySensVals[value])
     value = value + 1
     if(value == 12):

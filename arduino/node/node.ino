@@ -15,10 +15,12 @@ const char* SSID = "gayan";
 const char* PWD = "12345678";
 
 int state = 0;
+float cost;
 
 // MQTT Broker
 const char *mqtt_broker = "broker.hivemq.com";
 const char *topic = "ygTest/weight";
+const char *topic2 = "ygTest/cost";
 const int mqtt_port = 1883;
 
 WiFiClient espClient;
@@ -112,16 +114,17 @@ void setup()
 
 void stateChange(int weight, bool verified)
 {
-  if(weight > 100 && verified)
+  if(verified)
   {
     state = 2;
   }
-  else if(weight > 100 && !verified)
+  else if(!verified)
   {
     state = 1;
     Serial.println("Weight in state change: ");
     Serial.println(weight);
     client.publish(topic, String(weight).c_str());
+    client.publish(topic2, String(cost).c_str());
   }
   else
   {
@@ -131,8 +134,10 @@ void stateChange(int weight, bool verified)
 
 int measureWeight()
 {
-  return (int)scale.get_units();
+  return (int)scale.get_units(); 
 }
+
+
 
 void loop() 
 {
@@ -153,6 +158,106 @@ void loop()
   default:
     // measure weight
     int weight = measureWeight();
+    float price = 0;
+
+  /*if(weight ==0 && weight <0)
+  {
+    cost = 0.00;
+  }*/
+   if(weight >0 && weight <=60)
+  {
+    cost = 25.00;
+  }
+  else if(weight >60 && weight <=120)
+  {
+     cost = 40.00;
+  }
+  else if(weight >120 && weight <=180)
+  {
+     cost = 50.00;
+  }
+  else if(weight >180 && weight <=240)
+  {
+     cost = 65.00;
+  }
+  else if(weight >240 && weight <=350)
+  {
+     cost = 80.00;
+  }
+  else if(weight >350 && weight <=420)
+  {
+     cost = 95.00;
+  }
+  else if(weight >420 && weight <=490)
+  {
+     cost = 110.00;
+  }
+  else if(weight >490 && weight <=530)
+  {
+     cost = 130.00;
+  }
+  else if(weight >530 && weight <=600)
+  {
+     cost = 135.00;
+  }
+  else if(weight >600 && weight <=660)
+  {
+     cost = 145.00;
+  }
+  else if(weight >660 && weight <=720)
+  {
+     cost = 160.00;
+  }
+  else if(weight >720 && weight <=780)
+  {
+     cost = 190.00;
+  }
+  else if(weight >780 && weight <=860)
+  {
+     cost = 220.00;
+  }
+  else if(weight >860 && weight <=1000)
+  {
+     cost = 250.00;
+  }
+  else if(weight >1000 && weight <=1200)
+  {
+     cost = 300.00;
+  }
+  else if(weight >1200 && weight <=1350)
+  {
+     cost = 350.00;
+  }
+  else if(weight >1350 && weight <=1500)
+  {
+     cost = 410.00;
+  }
+  else if(weight >1500 && weight <=1600)
+  {
+     cost = 460.00;
+  }
+  else if(weight >1600 && weight <=1750)
+  {
+     cost = 510.00;
+  }
+  else if(weight >1750 && weight <=1850)
+  {
+     cost = 580.00;
+  }
+  else if(weight >1850 && weight <=1920)
+  {
+     cost = 660.00;
+  }
+  else if(weight >1920 && weight <=2000)
+  {
+     cost = 740.00;
+  }
+ /* else
+  {
+       Serial.print("Over_Load");
+  }*/
+
+
     Serial.println("Weight: ");
     Serial.println(weight);
     stateChange(weight, false);

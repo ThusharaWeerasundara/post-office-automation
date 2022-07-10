@@ -10,18 +10,21 @@ import { IMqttMessage, MqttService } from 'ngx-mqtt';
   styleUrls: ['./add-package.component.css']
 })
 export class AddPackageComponent implements OnInit, OnDestroy {
-  private subscription: Subscription;
+  private subscriptionWeight: Subscription;
+  private subscriptionCost: Subscription;
   topicWeight: string = "ygTest/weight";
-  msg: any;
+  topicCost: string = "ygTest/cost";
+  msgWeight: any;
+  msgCost: any;
   isConnected: boolean = false;
-  price: string = "0.00";
+  price: string = "0";
   weight: string = "0";
 
   constructor(private auth: PackageServicesService, private _mqttService: MqttService) 
   { 
    
-    this.subscription = this._mqttService.observe(this.topicWeight).subscribe((message: IMqttMessage) => {
-      this.msg = message;
+    this.subscriptionWeight = this._mqttService.observe(this.topicWeight).subscribe((message: IMqttMessage) => {
+      this.msgWeight = message;
       //console.log('msg: ', message);
       const reading = message.payload.toString();
 
@@ -29,6 +32,20 @@ export class AddPackageComponent implements OnInit, OnDestroy {
       {
         //console.log('Message: ' + reading);
         this.weight = reading;
+      }
+      
+      
+    });
+
+    this.subscriptionCost = this._mqttService.observe(this.topicCost).subscribe((message: IMqttMessage) => {
+      this.msgCost = message;
+      //console.log('msg: ', message);
+      const reading = message.payload.toString();
+
+      if(reading != "111")
+      {
+        //console.log('Message: ' + reading);
+        this.price = reading;
       }
       
       
@@ -42,7 +59,8 @@ export class AddPackageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscriptionWeight.unsubscribe();
+    this.subscriptionCost.unsubscribe();
   }
 
   packageForm = new FormGroup({

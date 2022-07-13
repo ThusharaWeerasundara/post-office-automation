@@ -17,7 +17,7 @@ export class AddPackageComponent implements OnInit, OnDestroy {
   msgWeight: any;
   msgCost: any;
   isConnected: boolean = false;
-  price: string = "0";
+  price: string = "0.00";
   weight: string = "0";
 
   constructor(private auth: PackageServicesService, private _mqttService: MqttService) 

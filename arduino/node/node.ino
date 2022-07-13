@@ -114,7 +114,7 @@ void setup()
 
 void stateChange(int weight, bool verified)
 {
-  if(verified)
+  if(verified && weight > 10)
   {
     state = 2;
   }
